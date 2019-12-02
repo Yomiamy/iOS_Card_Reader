@@ -15,12 +15,13 @@ class ViewController: UIViewController, STPPaymentCardTextFieldDelegate {
     
     private static let PLUSATOR_NUM_PLUS:Int = 3
     private static let PLUSATOR_RADIUS:CGFloat = 120.0
-    private static let PLUSATOR_BG_COLOR:CGColor = UIColor(red: 0.792, green: 0.811, blue: 0.819, alpha: 0.7).cgColor
+    private static let PLUSATOR_BG_COLOR:CGColor = UIColor(red: 0.812, green: 0.811, blue: 0.819, alpha:0.75).cgColor
     
     @IBOutlet weak var vCreditCardView: CreditCardFormView!
     @IBOutlet weak var mIvNfcRipper: UIImageView!
     
     let paymentTextField = STPPaymentCardTextField()
+    var mPulsator:Pulsator? = nil
     
     
     // MARK: - LifeCycle
@@ -34,14 +35,18 @@ class ViewController: UIViewController, STPPaymentCardTextFieldDelegate {
     }
     
     func initNfcIconEffect() {
-        let pulsator = Pulsator()
-        pulsator.numPulse = ViewController.PLUSATOR_NUM_PLUS
-        pulsator.radius = ViewController.PLUSATOR_RADIUS
-        pulsator.backgroundColor = ViewController.PLUSATOR_BG_COLOR
-        pulsator.position = CGPoint(x: mIvNfcRipper.frame.origin.x + mIvNfcRipper.frame.size.width / 2, y: mIvNfcRipper.frame.origin.y + mIvNfcRipper.frame.size.height / 2)
+        guard mPulsator == nil else {
+            return
+        }
         
-        self.view.layer.addSublayer(pulsator)
-        pulsator.start()
+        mPulsator = Pulsator()
+        mPulsator!.numPulse = ViewController.PLUSATOR_NUM_PLUS
+        mPulsator!.radius = ViewController.PLUSATOR_RADIUS
+        mPulsator!.backgroundColor = ViewController.PLUSATOR_BG_COLOR
+        mPulsator!.position = CGPoint(x: mIvNfcRipper.frame.origin.x + mIvNfcRipper.frame.size.width / 2, y: mIvNfcRipper.frame.origin.y + mIvNfcRipper.frame.size.height / 2)
+        
+        self.view.layer.addSublayer(mPulsator!)
+        mPulsator!.start()
     }
     
     func initPaymentTextField() {
