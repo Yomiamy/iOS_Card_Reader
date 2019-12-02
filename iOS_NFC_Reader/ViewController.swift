@@ -68,6 +68,13 @@ class ViewController: UIViewController, STPPaymentCardTextFieldDelegate {
         ])
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    }
+    
     // MARK: - STPPaymentCardTextFieldDelegate
     func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
         vCreditCardView.paymentCardTextFieldDidChange(cardNumber: textField.cardNumber, expirationYear: textField.expirationYear, expirationMonth: textField.expirationMonth, cvc: textField.cvc)
