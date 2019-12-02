@@ -6,6 +6,7 @@ target 'iOS_NFC_Reader' do
   use_frameworks!
 
   pod "Stripe"
+  pod 'IQKeyboardManagerSwift'
   # Pods for iOS_NFC_Reader
 
 end
