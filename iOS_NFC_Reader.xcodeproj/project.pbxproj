@@ -16,6 +16,7 @@
 		EDAE288D239112B400AE9F64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDAE288B239112B400AE9F64 /* LaunchScreen.storyboard */; };
 		EDAE289E2391130200AE9F64 /* CreditCardForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAE289A239112E900AE9F64 /* CreditCardForm.framework */; };
 		EDAE289F2391130200AE9F64 /* CreditCardForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDAE289A239112E900AE9F64 /* CreditCardForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EDF548D023964B8600F86D6A /* STPPaymentCardTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF548CF23964B8600F86D6A /* STPPaymentCardTextFieldExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,9 @@
 		EDAE288C239112B400AE9F64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDAE288E239112B400AE9F64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDAE2894239112E900AE9F64 /* CreditCardForm.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CreditCardForm.xcodeproj; path = "../CreditCardForm-iOS/CreditCardForm.xcodeproj"; sourceTree = "<group>"; };
+		EDF548C12395957200F86D6A /* iOS_NFC_Reader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS_NFC_Reader.entitlements; sourceTree = "<group>"; };
+		EDF548C623962EAA00F86D6A /* ObjBridgeHead.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjBridgeHead.h; sourceTree = "<group>"; };
+		EDF548CF23964B8600F86D6A /* STPPaymentCardTextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPPaymentCardTextFieldExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 		EDAE287F239112B200AE9F64 /* iOS_NFC_Reader */ = {
 			isa = PBXGroup;
 			children = (
+				EDF548CE23964B7500F86D6A /* Extensions */,
+				EDF548C12395957200F86D6A /* iOS_NFC_Reader.entitlements */,
 				EDAE2880239112B200AE9F64 /* AppDelegate.swift */,
 				EDAE2882239112B200AE9F64 /* SceneDelegate.swift */,
 				EDAE2884239112B200AE9F64 /* ViewController.swift */,
@@ -115,6 +121,7 @@
 				EDAE2889239112B400AE9F64 /* Assets.xcassets */,
 				EDAE288B239112B400AE9F64 /* LaunchScreen.storyboard */,
 				EDAE288E239112B400AE9F64 /* Info.plist */,
+				EDF548C623962EAA00F86D6A /* ObjBridgeHead.h */,
 			);
 			path = iOS_NFC_Reader;
 			sourceTree = "<group>";
@@ -134,6 +141,14 @@
 				C3229FA9BE2E02A5469C38BB /* Pods_iOS_NFC_Reader.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDF548CE23964B7500F86D6A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EDF548CF23964B8600F86D6A /* STPPaymentCardTextFieldExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +292,7 @@
 			files = (
 				EDAE2885239112B200AE9F64 /* ViewController.swift in Sources */,
 				EDAE2881239112B200AE9F64 /* AppDelegate.swift in Sources */,
+				EDF548D023964B8600F86D6A /* STPPaymentCardTextFieldExtension.swift in Sources */,
 				EDAE2883239112B200AE9F64 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +438,7 @@
 			baseConfigurationReference = 14969A791440C740688272A5 /* Pods-iOS_NFC_Reader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iOS_NFC_Reader/iOS_NFC_Reader.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H2724L9BS5;
 				INFOPLIST_FILE = iOS_NFC_Reader/Info.plist;
@@ -430,8 +447,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nfc.reader.iOS-NFC-Reader";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yomi.card-reader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/yomi/XCode/iOS_NFC_Reader/iOS_NFC_Reader/ObjBridgeHead.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -442,6 +460,7 @@
 			baseConfigurationReference = 759A59FA3CAA87510C81154A /* Pods-iOS_NFC_Reader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iOS_NFC_Reader/iOS_NFC_Reader.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H2724L9BS5;
 				INFOPLIST_FILE = iOS_NFC_Reader/Info.plist;
@@ -450,8 +469,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nfc.reader.iOS-NFC-Reader";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yomi.card-reader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/yomi/XCode/iOS_NFC_Reader/iOS_NFC_Reader/ObjBridgeHead.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

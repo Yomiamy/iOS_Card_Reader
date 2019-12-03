@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="263" width="414" height="589"/>
                                 <subviews>
                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="7b9-zt-rpy" userLabel="VCreditCardView" customClass="CreditCardFormView" customModule="CreditCardForm">
-                                        <rect key="frame" x="52" y="73.5" width="330" height="216.5"/>
+                                        <rect key="frame" x="52" y="73.5" width="320" height="216.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="216.5" id="SXm-tE-CuA"/>
@@ -73,7 +73,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="7b9-zt-rpy" firstAttribute="trailing" secondItem="nlX-Pa-IGN" secondAttribute="trailing" constant="40" id="0wy-6V-aeI"/>
+                                    <constraint firstItem="7b9-zt-rpy" firstAttribute="trailing" secondItem="nlX-Pa-IGN" secondAttribute="trailing" constant="30" id="0wy-6V-aeI"/>
                                     <constraint firstAttribute="trailing" secondItem="nlX-Pa-IGN" secondAttribute="trailing" constant="72" id="4Ld-AS-J2u"/>
                                     <constraint firstItem="nlX-Pa-IGN" firstAttribute="top" secondItem="ETY-GL-E6l" secondAttribute="top" constant="12" id="EM6-oM-EBg"/>
                                     <constraint firstItem="7b9-zt-rpy" firstAttribute="leading" secondItem="nlX-Pa-IGN" secondAttribute="leading" constant="-20" id="Igk-2P-Z2K"/>
