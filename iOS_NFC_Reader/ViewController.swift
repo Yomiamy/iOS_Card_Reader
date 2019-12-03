@@ -11,7 +11,7 @@ import CreditCardForm
 import Stripe
 import Pulsator
 
-class ViewController: UIViewController, STPPaymentCardTextFieldDelegate {
+class ViewController: UIViewController, STPPaymentCardTextFieldDelegate, CardIOPaymentViewControllerDelegate {
     
     private static let PLUSATOR_NUM_PLUS:Int = 3
     private static let PLUSATOR_RADIUS:CGFloat = 120.0
@@ -23,16 +23,20 @@ class ViewController: UIViewController, STPPaymentCardTextFieldDelegate {
     let paymentTextField = STPPaymentCardTextField()
     var mPulsator:Pulsator? = nil
     
+
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initPaymentTextField()
-        
     }
     
     override func viewDidLayoutSubviews() {
         initNfcIconEffect()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        CardIOUtilities.preloadCardIO()
     }
     
     func initNfcIconEffect() {
@@ -78,13 +82,10 @@ class ViewController: UIViewController, STPPaymentCardTextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    }
-    
     // MARK: - Event
     
     @IBAction func onCameraScan(_ sender: Any) {
-        print(#function)
+        self.present(CardIOPaymentViewController(paymentDelegate: self), animated: true, completion: nil)
     }
     
     // MARK: - STPPaymentCardTextFieldDelegate
@@ -102,6 +103,22 @@ class ViewController: UIViewController, STPPaymentCardTextFieldDelegate {
     
     func paymentCardTextFieldDidEndEditingCVC(_ textField: STPPaymentCardTextField) {
         vCreditCardView.paymentCardTextFieldDidEndEditingCVC()
+    }
+    
+    // MARK: - CardIOViewDelegate
+    func userDidProvide(_ info
+        : CardIOCreditCardInfo!, in paymentViewController: CardIOPaymentViewController!) {
+        let card: STPCardParams = STPCardParams()
+        card.number = info.cardNumber
+        card.expMonth = info.expiryMonth
+        card.expYear = info.expiryYear
+        card.cvc = info.cvv
+        paymentTextField.setExistingCard(card: card)
+        paymentViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func userDidCancel(_ paymentViewController: CardIOPaymentViewController!) {
+        paymentViewController.dismiss(animated: true, completion: nil)
     }
 }
 
