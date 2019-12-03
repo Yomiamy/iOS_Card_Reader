@@ -28,6 +28,7 @@ class ViewController: UIViewController, STPPaymentCardTextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initPaymentTextField()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -78,6 +79,12 @@ class ViewController: UIViewController, STPPaymentCardTextFieldDelegate {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    }
+    
+    // MARK: - Event
+    
+    @IBAction func onCameraScan(_ sender: Any) {
+        print(#function)
     }
     
     // MARK: - STPPaymentCardTextFieldDelegate
